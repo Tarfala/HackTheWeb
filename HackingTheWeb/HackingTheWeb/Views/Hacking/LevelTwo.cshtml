@@ -1,0 +1,34 @@
+﻿@model LevelTwo
+@{
+    ViewData["Title"] = "LevelTwo";
+}
+
+<div class="text-center">
+    <h4 class="display-4">Welcome</h4>
+    <p4>Login success! Now for the next challenge.</p4>
+    <br />
+    <p4>I made a guessing game, but someone told me there's a bug in it, can you find it?</p4>
+</div>
+<br />
+<br />
+<br />
+<div class="row">
+    <div class="col-4"></div>
+    <div class="col-4">
+        <form asp-action="CheckAnswerForLevelTwo">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="numberInput" class="control-label"></label>
+                <input asp-for="numberInput" class="form-control" />
+                <span asp-validation-for="numberInput" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Login" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+    <div class="col-4"></div>
+
+</div>
+
