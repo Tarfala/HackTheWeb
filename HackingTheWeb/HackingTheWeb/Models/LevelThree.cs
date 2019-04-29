@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace HackingTheWeb.Models
 {
-    public class LevelTwo
+    public class LevelThree
     {
         [Key]
-        [Display(Name = "Guess the number")]
-        [RegularExpression("[^0-9]", ErrorMessage = "You can only enter numbers")]
-        public int numberInput { get; set; }
+        [Display(Name = "Password")]
+        public string PassWord { get; set; }
     }
 }

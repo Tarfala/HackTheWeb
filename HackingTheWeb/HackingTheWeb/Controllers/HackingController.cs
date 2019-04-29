@@ -27,6 +27,7 @@ namespace HackingTheWeb.Controllers
                 Password = password.ToString()
             };
             _repo.UpdateDatabaseWithNewPassword(baseLogin);
+            _repo.SeedLevelThreePassword();
             return View();
         }
 
@@ -57,9 +58,58 @@ namespace HackingTheWeb.Controllers
             return View();
         }
 
-        public IActionResult CheckAnswerForLevelTwo(string input)
+        public IActionResult CheckAnswerForLevelTwo(string numberInput)
         {
-            return View("~/Views/Hacking/LevelTwo.cshtml");
+            Random randome = new Random();
+            int randomeNumber = randome.Next(1000000);
+            int inputAsInt;
+            try
+            {
+               inputAsInt = int.Parse(numberInput);
+
+                if (inputAsInt == randomeNumber)
+                {
+                    ViewBag.GuessNumber = "Good job! You're great at guessing";
+                    return View("~/Views/Hacking/LevelThree.cshtml");
+
+                }
+                else
+                {
+                    ViewBag.GuessNumber = "Sorry, wrong number, try again";
+                    return View("~/Views/Hacking/LevelTwo.cshtml");
+                }
+
+            }
+            catch (Exception)
+            {
+                ViewBag.GuessNumber = "Good job! That code wasn't the best...";
+                return View("~/Views/Hacking/LevelThree.cshtml");
+            }
         }
+
+        public IActionResult LevelThree()
+        {
+            return View();
+        }
+
+        public IActionResult LevelThreePassCheck(string password)
+        {
+            if (password == _repo.CheckLevelThreePassword())
+            {
+                return View("~/Views/Hacking/LevelFour.cshtml");
+            }
+            else
+            {
+                ViewBag.LevelThree = "Sorry, wrong password";
+                return View("~/Views/Hacking/LevelThree.cshtml");
+            }
+        }
+
+        public IActionResult LevelFour()
+        {
+            return View();
+        }
+
+
     }
 }

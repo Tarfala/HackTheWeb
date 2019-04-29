@@ -2,13 +2,23 @@
 @{
     ViewData["Title"] = "LevelTwo";
 }
+@if (@ViewBag.GuessNumber != null)
+{
+    <div class="alert alert-info alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        @ViewBag.GuessNumber
+    </div>
+}
+<br />
+    <div class="text-center">
+        <p4>Login success! Now for the next challenge.</p4>
+        <br />
+        <p4>I made a guessing game, but someone told me there's a bug in it, can you find it?</p4>
+        <p4>The source code is below</p4>
 
-<div class="text-center">
-    <h4 class="display-4">Welcome</h4>
-    <p4>Login success! Now for the next challenge.</p4>
-    <br />
-    <p4>I made a guessing game, but someone told me there's a bug in it, can you find it?</p4>
-</div>
+    </div>
 <br />
 <br />
 <br />
@@ -31,4 +41,9 @@
     <div class="col-4"></div>
 
 </div>
-
+<div class="row">
+    <div class="col-8">
+        <img src="~/Images/LevelTwo.png" />
+    </div>
+    <div class="col-4"></div>
+</div>

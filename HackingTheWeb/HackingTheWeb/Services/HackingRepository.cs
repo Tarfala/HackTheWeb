@@ -69,5 +69,24 @@ namespace HackingTheWeb.Services
             return _context.Login.SingleOrDefault().Password;
         }
 
+        public void SeedLevelThreePassword()
+        {
+            LevelThree levelThree = new LevelThree();
+            levelThree.PassWord = "Easy";
+
+            List<LevelThree> listToCheckIfEmpty = _context.LevelThree.AsNoTracking().ToList();
+            if (listToCheckIfEmpty.Count() == 0)
+            {
+                _context.LevelThree.Add(levelThree);
+                _context.SaveChanges();
+            }           
+        }
+
+        public string CheckLevelThreePassword()
+        {
+            LevelThree correctLevelThree = _context.LevelThree.FirstOrDefault();
+            return correctLevelThree.PassWord;
+        }
+
     }
 }

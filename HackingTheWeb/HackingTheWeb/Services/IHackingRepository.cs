@@ -11,5 +11,7 @@ namespace HackingTheWeb.Services
         void UpdateDatabaseWithNewPassword(Login baseLogin);
         Login CheckIfPasswordIsCorrect(string password);
         string GetCorrectPassword();
+        void SeedLevelThreePassword();
+        string CheckLevelThreePassword();
     }
 }
