@@ -1,7 +1,56 @@
-﻿
+﻿@model LevelFour
 @{
     ViewData["Title"] = "LevelFour";
 }
 
-<h1>LevelFour</h1>
+    @if (@ViewBag.LevelFour != null)
+    {
+        <div class="alert alert-info alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            @ViewBag.LevelFour
+        </div>
+    }
+        <div class="text-center">
+            <h4 class="display-4">Cool!</h4>
+            <p4><strike>Not</strike> much info <u>here</u>, just <b>inspect</b></p4> <!--And here it is, password: 'GoToNextLevel'-->
+        </div>
+    <br />
+    <br />
+    <br />
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4">
+            <form asp-action="LevelFourPassCheck">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="passForLevelFour" class="control-label"></label>
+                    <input asp-for="passForLevelFour" class="form-control" />
+                    <span asp-validation-for="passForLevelFour" class="text-danger"></span>
+                </div>
 
+                <div class="form-group">
+                    <input type="submit" value="Enter" class="btn btn-primary" />
+                </div>
+            </form>
+            <div>
+                <button class="btn btn-danger" onclick="alertHelpOne()">Hint 1</button>
+                <button class="btn btn-danger" onclick="alertHelpTwo()">Hint 2</button>
+                <button class="btn btn-danger" onclick="Solution()">Solution...</button>
+            </div>
+        </div>
+        <div class="col-4"></div>
+
+    </div>
+    <script>
+        function alertHelpOne() {
+            alert("Right-click on the webpage and select 'inspect' or 'Inspect Element'");
+        }
+        function alertHelpTwo() {
+            alert("Find the html-code for the text 'Not much info here, just inspect'");
+        }
+        function Solution() {
+            alert("Password: GoToNextLevel");
+        }
+    </script>

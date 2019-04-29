@@ -16,6 +16,8 @@ namespace HackingTheWeb.Data
         }
         public DbSet<Login> Login { get; set; }
         public DbSet<LevelThree> LevelThree { get; set; }
+        public DbSet<LevelFour> LevelFour { get; set; }
+
 
     }
 }

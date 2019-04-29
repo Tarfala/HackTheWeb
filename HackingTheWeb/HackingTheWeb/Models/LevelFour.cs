@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace HackingTheWeb.Models
 {
-    public class Login
+    public class LevelFour
     {
         [Key]
-        public string Username { get; set; }
         [Display(Name = "Password")]
-        public string SecretPassWord { get; set; }
+        public string passForLevelFour { get; set; }
     }
 }

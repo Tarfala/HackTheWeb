@@ -25,16 +25,35 @@
         <form asp-action="CheckPassword">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Password" class="control-label"></label>
-                <input asp-for="Password" class="form-control" />
-                <span asp-validation-for="Password" class="text-danger"></span>
+                <label asp-for="SecretPassWord" class="control-label"></label>
+                <input asp-for="SecretPassWord" class="form-control" />
+                <span asp-validation-for="SecretPassWord" class="text-danger"></span>
             </div>
 
             <div class="form-group">
                 <input type="submit" value="Login" class="btn btn-primary" />
+
             </div>
+            <div>
+                <button class="btn btn-danger" onclick="alertHelpOne()">Hint 1</button>
+                <button class="btn btn-danger" onclick="alertHelpTwo()">Hint 2</button>
+                <button class="btn btn-danger" onclick="Solution()">Solution...</button>
+            </div>
+            
         </form>
     </div>
     <div class="col-4"></div>
 
 </div>
+
+<script>
+    function alertHelpOne() {
+        alert("The password is in a database, try SQL-injection");
+    }
+    function alertHelpTwo() {
+        alert("Here is the SQL statement in the code:\nselect * from Login WHERE Username = 'Admin' and Password = {password}");
+    }
+    function Solution() {
+        alert("Try this:\n 'SQL injection is common' OR 1=1");
+    }
+</script>

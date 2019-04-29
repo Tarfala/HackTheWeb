@@ -38,12 +38,12 @@ namespace HackingTheWeb.Services
 
         }
 
-        public Login CheckIfPasswordIsCorrect(string password)
+        public Login CheckIfPasswordIsCorrect(string SecretPassWord)
         {
             Login login = new Login();
             try
             {
-                string Sql = $"select* from Login WHERE Username = 'Admin' and Password = {password}";
+                string Sql = $"select* from Login WHERE Username = 'Admin' and SecretPassWord = {SecretPassWord}";
                 using (SqlConnection connection = new SqlConnection(conString))
                 using (SqlCommand command = new SqlCommand(Sql, connection))
                 {
@@ -52,7 +52,7 @@ namespace HackingTheWeb.Services
                     if (reader.Read())
                     {
                         login.Username = reader.GetSqlString(0).Value;
-                        login.Password = reader.GetSqlString(1).Value;
+                        login.SecretPassWord = reader.GetSqlString(1).Value;
                     }
                 }
                 return login;
@@ -66,7 +66,7 @@ namespace HackingTheWeb.Services
 
         public string GetCorrectPassword()
         {
-            return _context.Login.SingleOrDefault().Password;
+            return _context.Login.SingleOrDefault().SecretPassWord;
         }
 
         public void SeedLevelThreePassword()
@@ -87,6 +87,7 @@ namespace HackingTheWeb.Services
             LevelThree correctLevelThree = _context.LevelThree.FirstOrDefault();
             return correctLevelThree.PassWord;
         }
+
 
     }
 }

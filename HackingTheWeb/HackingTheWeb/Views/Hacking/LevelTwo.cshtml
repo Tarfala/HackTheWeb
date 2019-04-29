@@ -12,13 +12,13 @@
     </div>
 }
 <br />
-    <div class="text-center">
-        <p4>Login success! Now for the next challenge.</p4>
-        <br />
-        <p4>I made a guessing game, but someone told me there's a bug in it, can you find it?</p4>
-        <p4>The source code is below</p4>
+<div class="text-center">
+    <p4>Login success! Now for the next challenge.</p4>
+    <br />
+    <p4>I made a guessing game, but someone told me there's a bug in it, can you find it?</p4>
+    <p4>The source code is below</p4>
 
-    </div>
+</div>
 <br />
 <br />
 <br />
@@ -34,16 +34,36 @@
             </div>
 
             <div class="form-group">
-                <input type="submit" value="Login" class="btn btn-primary" />
+                <input type="submit" value="Enter" class="btn btn-primary" />
             </div>
+
         </form>
+        <div>
+            <button class="btn btn-danger" onclick="alertHelpOne()">Hint 1</button>
+            <button class="btn btn-danger" onclick="alertHelpTwo()">Hint 2</button>
+            <button class="btn btn-danger" onclick="Solution()">Solution...</button>
+        </div>
     </div>
     <div class="col-4"></div>
 
 </div>
+<br />
+<br />
 <div class="row">
     <div class="col-8">
         <img src="~/Images/LevelTwo.png" />
     </div>
     <div class="col-4"></div>
 </div>
+
+<script>
+    function alertHelpOne() {
+        alert("Make it catch the exception");
+    }
+    function alertHelpTwo() {
+        alert("Use overflow exception\nAn 'int' can have any whole number between -2147483648 to 2147483647");
+    }
+    function Solution() {
+        alert("Try this:\n 10000000000000000000000");
+    }
+</script>

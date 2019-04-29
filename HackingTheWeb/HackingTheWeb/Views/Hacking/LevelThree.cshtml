@@ -39,10 +39,31 @@
             </div>
 
             <div class="form-group">
-                <input type="submit" value="Login" class="btn btn-primary" />
+                <input type="submit" value="Enter" class="btn btn-primary" />
             </div>
         </form>
+        <div>
+            <button class="btn btn-danger" onclick="alertHelpOne()">Hint 1</button>
+            <button class="btn btn-danger" onclick="alertHelpTwo()">Hint 2</button>
+            <button class="btn btn-danger" onclick="alertHelpThree()">Hint 3</button>
+            <button class="btn btn-danger" onclick="Solution()">Solution...</button>
+        </div>
     </div>
     <div class="col-4"></div>
 
 </div>
+
+<script>
+    function alertHelpOne() {
+        alert("The password is currently decoded in 'Base64'\nGoogle Base64 decoder");
+    }
+    function alertHelpTwo() {
+        alert("Next step is decoded in 'Base32'\nGoogle Base32 decoder (try more the one decoder)");
+    }
+    function alertHelpThree() {
+        alert("Next step is decoded in 'Base2/Binary'\nGoogle Binary decoder");
+    }
+    function Solution() {
+        alert("Base64: NjByazJjMWc2NHIzMjgxZzY0cmswYzFnNjByajBjMWg2NHJrMGMxaDY0ZzMwYzloNjRyazBjMWgxOA==\nBase32: 60rk2c1g64r3281g64rk0c1g60rj0c1h64rk0c1h64g30c9h64rk0c1h18\nBinary: 01100101 01100001 01110011 01111001\nPassword: easy");
+    }
+</script>

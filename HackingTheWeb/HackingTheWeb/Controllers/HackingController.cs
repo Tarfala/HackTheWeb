@@ -24,31 +24,32 @@ namespace HackingTheWeb.Controllers
             Login baseLogin = new Login
             {
                 Username = "Admin",
-                Password = password.ToString()
+                SecretPassWord = password.ToString()
             };
             _repo.UpdateDatabaseWithNewPassword(baseLogin);
             _repo.SeedLevelThreePassword();
+
             return View();
         }
 
         [ValidateAntiForgeryToken]
-        public IActionResult CheckPassword(string password)
+        public IActionResult CheckPassword(string SecretPassWord)
         {
             string correctPassword = _repo.GetCorrectPassword();
-            if (password == correctPassword)
+            if (SecretPassWord == correctPassword)
             {
                 return View("~/Views/Hacking/LevelTwo.cshtml");
             }
 
-            Login newLogin = _repo.CheckIfPasswordIsCorrect(password);
+            Login newLogin = _repo.CheckIfPasswordIsCorrect(SecretPassWord);
 
-            if (newLogin.Password == null)
+            if (newLogin.SecretPassWord == null)
             {
                 ViewBag.LoginInfo = "Sorry, wrong password";
             }
             else
             {
-                ViewBag.LoginInfo = $"Good job! here's your reward, the password: {newLogin.Password} ";
+                ViewBag.LoginInfo = $"Good job! here's your reward, the password: {newLogin.SecretPassWord} ";
             }
             return View("~/Views/Hacking/LevelOne.cshtml");
         }
@@ -61,8 +62,13 @@ namespace HackingTheWeb.Controllers
         public IActionResult CheckAnswerForLevelTwo(string numberInput)
         {
             Random randome = new Random();
-            int randomeNumber = randome.Next(1000000);
+            int randomeNumber = randome.Next(int.MaxValue);
             int inputAsInt;
+            if (numberInput == null)
+            {
+                ViewBag.GuessNumber = "Sorry, wrong number, try again";
+                return View("~/Views/Hacking/LevelTwo.cshtml");
+            }
             try
             {
                inputAsInt = int.Parse(numberInput);
@@ -94,7 +100,12 @@ namespace HackingTheWeb.Controllers
 
         public IActionResult LevelThreePassCheck(string password)
         {
-            if (password == _repo.CheckLevelThreePassword())
+            if (password == null)
+            {
+                ViewBag.LevelThree = "Sorry, wrong password";
+                return View("~/Views/Hacking/LevelThree.cshtml");
+            }
+            if (password.ToUpper() == _repo.CheckLevelThreePassword().ToUpper())
             {
                 return View("~/Views/Hacking/LevelFour.cshtml");
             }
@@ -110,6 +121,26 @@ namespace HackingTheWeb.Controllers
             return View();
         }
 
+        public IActionResult LevelFourPassCheck(string passForLevelFour)
+        {
+            if (passForLevelFour == "GoToNextLevel")
+            {
+                return View("~/Views/Hacking/LevelFive.cshtml");
+
+            }
+            else
+            {
+                ViewBag.LevelFour = "Sorry, wrong password";
+                return View("~/Views/Hacking/LevelFour.cshtml");
+
+            }
+
+        }
+
+        public IActionResult LevelFive()
+        {
+            return View();
+        }
 
     }
 }
