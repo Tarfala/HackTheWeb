@@ -142,5 +142,29 @@ namespace HackingTheWeb.Controllers
             return View();
         }
 
+        public IActionResult LevelFivePassCheck(string passWord)
+        {
+            if (passWord == null)
+            {
+                ViewBag.LevelFive = "Sorry, wrong password";
+                return View("~/Views/Hacking/LevelFive.cshtml");
+            }
+            if (passWord.ToUpper() == "PNGHEX!?")
+            {
+                return View("~/Views/Hacking/LevelSix.cshtml");
+            }
+            else
+            {
+                ViewBag.LevelFive = "Sorry, wrong password";
+                return View("~/Views/Hacking/LevelFive.cshtml");
+
+            }
+        }
+
+        public IActionResult LevelSix()
+        {
+            return View();
+        }
+
     }
 }

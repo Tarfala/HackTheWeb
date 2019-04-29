@@ -1,7 +1,133 @@
-﻿
+﻿@model LevelFive
 @{
     ViewData["Title"] = "LevelFive";
 }
+@if (@ViewBag.LevelFive != null)
+{
+    <div class="alert alert-info alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        @ViewBag.LevelFive
+    </div>
+}
+<div class="text-center">
+    <h4 class="display-4">So far, so good!</h4>
+    <p4>This time I got a corrupt image, might be a PNG?</p4>
+    <br />
+    <input type="text" maxlength="2" size="1" value="xx" onchange="one(this.value)">
+    <input type="text" maxlength="2" size="1" value="xx" onchange="two(this.value)">
+    <input type="text" maxlength="2" size="1" value="xx" onchange="three(this.value)">
+    <input type="text" maxlength="2" size="1" value="xx" onchange="four(this.value)">
+    <input type="text" maxlength="2" size="1" value="xx" onchange="five(this.value)">
+    <input type="text" maxlength="2" size="1" value="xx" onchange="six(this.value)">
+    <input type="text" maxlength="2" size="1" value="xx" onchange="seven(this.value)">
+    <input type="text" maxlength="2" size="1" value="xx" onchange="eight(this.value)">
+</div>
 
-<h1>LevelFive</h1>
+<div id="1" style="left: 400px; top: 550px; position: absolute"> <img style="display: none" id="11" src="~/Images/1.png"> </div>
+<div id="2" style="left: 462px; top: 550px; position: absolute"> <img style="display: none" id="22" src="~/Images/2.png"> </div>
+<div id="3" style="left: 524px; top: 550px; position: absolute"> <img style="display: none" id="33" src="~/Images/3.png"> </div>
+<div id="4" style="left: 586px; top: 550px; position: absolute"> <img style="display: none" id="44" src="~/Images/4.png"> </div>
+<div id="5" style="left: 648px; top: 550px; position: absolute"> <img style="display: none" id="55" src="~/Images/5.png"> </div>
+<div id="6" style="left: 710px; top: 550px; position: absolute"> <img style="display: none" id="66" src="~/Images/6.png"> </div>
+<div id="7" style="left: 772px; top: 550px; position: absolute"> <img style="display: none" id="77" src="~/Images/7.png"> </div>
+<div id="8" style="left: 834px; top: 550px; position: absolute"> <img style="display: none" id="88" src="~/Images/8.png"> </div>
+<br />
+<br />
+<br />
+<div class="row">
+    <div class="col-4"></div>
+    <div class="col-4">
+        <form asp-action="LevelFivePassCheck">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="passWord" class="control-label"></label>
+                <input asp-for="passWord" class="form-control" />
+                <span asp-validation-for="passWord" class="text-danger"></span>
+            </div>
 
+            <div class="form-group">
+                <input type="submit" value="Enter" class="btn btn-primary" />
+            </div>
+        </form>
+        <div>
+            <button class="btn btn-danger" onclick="alertHelpOne()">Hint 1</button>
+            <button class="btn btn-danger" onclick="alertHelpTwo()">Hint 2</button>
+            <button class="btn btn-danger" onclick="Solution()">Solution...</button>
+        </div>
+    </div>
+    <div class="col-4"></div>
+
+</div>
+
+
+
+
+<script>
+    function one(val) {
+        if (val == 89) {
+            document.getElementById("11").style.display = "block";
+        } else {
+            document.getElementById("11").style.display = "none";
+        }
+    }
+    function two(val) {
+        if (val == 50) {
+            document.getElementById("22").style.display = "block";
+        } else {
+            document.getElementById("22").style.display = "none";
+        }
+    }
+    function three(val) {
+        if (val.toUpperCase() == "4E") {
+            document.getElementById("33").style.display = "block";
+        } else {
+            document.getElementById("33").style.display = "none";
+        }
+    }
+    function four(val) {
+        if (val == 47) {
+            document.getElementById("44").style.display = "block";
+        } else {
+            document.getElementById("44").style.display = "none";
+        }
+    }
+    function five(val) {
+        if (val.toUpperCase() == "0D") {
+            document.getElementById("55").style.display = "block";
+        } else {
+            document.getElementById("55").style.display = "none";
+        }
+    }
+    function six(val) {
+        if (val.toUpperCase() == "0A") {
+            document.getElementById("66").style.display = "block";
+        } else {
+            document.getElementById("66").style.display = "none";
+        }
+    }
+    function seven(val) {
+        if (val.toUpperCase() == "1A") {
+            document.getElementById("77").style.display = "block";
+        } else {
+            document.getElementById("77").style.display = "none";
+        }
+    }
+    function eight(val) {
+        if (val.toUpperCase() == "0A") {
+            document.getElementById("88").style.display = "block";
+        } else {
+            document.getElementById("88").style.display = "none";
+        }
+    }
+    function alertHelpOne() {
+        alert("Every file-type has a hex signature");
+    }
+    function alertHelpTwo() {
+        alert("Try to find the hex signature for PNG on Google");
+    }
+    function Solution() {
+        alert("Password: PNGHEX!?");
+    }
+</script>

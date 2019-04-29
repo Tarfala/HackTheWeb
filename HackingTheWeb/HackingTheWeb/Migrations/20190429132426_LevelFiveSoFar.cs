@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace HackingTheWeb.Migrations
 {
-    public partial class ModelLoginAdded : Migration
+    public partial class LevelFiveSoFar : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -48,11 +48,33 @@ namespace HackingTheWeb.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "LevelFour",
+                columns: table => new
+                {
+                    passForLevelFour = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_LevelFour", x => x.passForLevelFour);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "LevelThree",
+                columns: table => new
+                {
+                    PassWord = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_LevelThree", x => x.PassWord);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Login",
                 columns: table => new
                 {
                     Username = table.Column<string>(nullable: false),
-                    Password = table.Column<string>(nullable: true)
+                    SecretPassWord = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -221,6 +243,12 @@ namespace HackingTheWeb.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "LevelFour");
+
+            migrationBuilder.DropTable(
+                name: "LevelThree");
 
             migrationBuilder.DropTable(
                 name: "Login");

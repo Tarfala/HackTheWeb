@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HackingTheWeb.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190426130205_changedLevelTwoToString")]
-    partial class changedLevelTwoToString
+    [Migration("20190429132426_LevelFiveSoFar")]
+    partial class LevelFiveSoFar
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,12 +21,32 @@ namespace HackingTheWeb.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("HackingTheWeb.Models.LevelFour", b =>
+                {
+                    b.Property<string>("passForLevelFour")
+                        .ValueGeneratedOnAdd();
+
+                    b.HasKey("passForLevelFour");
+
+                    b.ToTable("LevelFour");
+                });
+
+            modelBuilder.Entity("HackingTheWeb.Models.LevelThree", b =>
+                {
+                    b.Property<string>("PassWord")
+                        .ValueGeneratedOnAdd();
+
+                    b.HasKey("PassWord");
+
+                    b.ToTable("LevelThree");
+                });
+
             modelBuilder.Entity("HackingTheWeb.Models.Login", b =>
                 {
                     b.Property<string>("Username")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Password");
+                    b.Property<string>("SecretPassWord");
 
                     b.HasKey("Username");
 
